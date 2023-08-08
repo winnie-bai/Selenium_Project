@@ -1,0 +1,2 @@
+[32mINFO    [0m utils.log_utils:home_page.py:26 点击菜单：通讯录
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

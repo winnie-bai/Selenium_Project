@@ -1,0 +1,5 @@
+[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
+[32mINFO    [0m utils.log_utils:home_page.py:13 点击添加成员按钮
+[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 输入姓名邵健,用户id41140119901105970X,电话18093991426
+[35mDEBUG   [0m utils.log_utils:member_list_page.py:14 获取提示文案为【保存成功】
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

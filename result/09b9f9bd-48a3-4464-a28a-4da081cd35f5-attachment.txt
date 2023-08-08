@@ -1,0 +1,25 @@
+[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
+[32mINFO    [0m utils.log_utils:home_page.py:13 点击添加成员按钮
+[1m[31mERROR   [0m utils.log_utils:base.py:33 Message: no such element: Unable to locate element: {"method":"css selector","selector":"[node-type='addmember']"}
+  (Session info: chrome=114.0.5735.133)
+Stacktrace:
+#0 0x55df865464e3 <unknown>
+#1 0x55df86275c76 <unknown>
+#2 0x55df862b1c96 <unknown>
+#3 0x55df862b1dc1 <unknown>
+#4 0x55df862eb7f4 <unknown>
+#5 0x55df862d103d <unknown>
+#6 0x55df862e930e <unknown>
+#7 0x55df862d0de3 <unknown>
+#8 0x55df862a62dd <unknown>
+#9 0x55df862a734e <unknown>
+#10 0x55df865063e4 <unknown>
+#11 0x55df8650a3d7 <unknown>
+#12 0x55df86514b20 <unknown>
+#13 0x55df8650b023 <unknown>
+#14 0x55df864d91aa <unknown>
+#15 0x55df8652f6b8 <unknown>
+#16 0x55df8652f847 <unknown>
+#17 0x55df8653f243 <unknown>
+#18 0x7f38fe91f609 start_thread
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

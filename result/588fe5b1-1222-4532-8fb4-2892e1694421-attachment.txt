@@ -1,0 +1,26 @@
+[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
+[32mINFO    [0m utils.log_utils:home_page.py:13 点击添加成员按钮
+[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 输入姓名潘勇,用户id620723196905045373,电话13788225669
+[1m[31mERROR   [0m utils.log_utils:base.py:33 Message: no such element: Unable to locate element: {"method":"link text","selector":"保存"}
+  (Session info: chrome=114.0.5735.133)
+Stacktrace:
+#0 0x55e67b4dc4e3 <unknown>
+#1 0x55e67b20bc76 <unknown>
+#2 0x55e67b247c96 <unknown>
+#3 0x55e67b247dc1 <unknown>
+#4 0x55e67b2817f4 <unknown>
+#5 0x55e67b26703d <unknown>
+#6 0x55e67b27f30e <unknown>
+#7 0x55e67b266de3 <unknown>
+#8 0x55e67b23c2dd <unknown>
+#9 0x55e67b23d34e <unknown>
+#10 0x55e67b49c3e4 <unknown>
+#11 0x55e67b4a03d7 <unknown>
+#12 0x55e67b4aab20 <unknown>
+#13 0x55e67b4a1023 <unknown>
+#14 0x55e67b46f1aa <unknown>
+#15 0x55e67b4c56b8 <unknown>
+#16 0x55e67b4c5847 <unknown>
+#17 0x55e67b4d5243 <unknown>
+#18 0x7fbceec88609 start_thread
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

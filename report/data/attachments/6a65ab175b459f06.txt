@@ -1,0 +1,3 @@
+[32mINFO    [0m utils.log_utils:home_page.py:26 点击菜单：通讯录
+[32mINFO    [0m utils.log_utils:member_list_page.py:19 点击【添加成员】按钮
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

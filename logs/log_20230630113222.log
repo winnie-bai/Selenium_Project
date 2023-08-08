@@ -1,0 +1,59 @@
+[2023-06-30 11:32:26] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
+[2023-06-30 11:32:27] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
+[2023-06-30 11:32:32] [ERROR] [base.py]/[line: 49]/[inner] Message: no such element: Unable to locate element: {"method":"css selector","selector":"[node-type='addmember']"}
+  (Session info: chrome=114.0.5735.198)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x005AA813+48355]
+	(No symbol) [0x0053C4B1]
+	(No symbol) [0x00445358]
+	(No symbol) [0x004709A5]
+	(No symbol) [0x00470B3B]
+	(No symbol) [0x0049E232]
+	(No symbol) [0x0048A784]
+	(No symbol) [0x0049C922]
+	(No symbol) [0x0048A536]
+	(No symbol) [0x004682DC]
+	(No symbol) [0x004693DD]
+	GetHandleVerifier [0x0080AABD+2539405]
+	GetHandleVerifier [0x0084A78F+2800735]
+	GetHandleVerifier [0x0084456C+2775612]
+	GetHandleVerifier [0x006351E0+616112]
+	(No symbol) [0x00545F8C]
+	(No symbol) [0x00542328]
+	(No symbol) [0x0054240B]
+	(No symbol) [0x00534FF7]
+	BaseThreadInitThunk [0x76787D59+25]
+	RtlInitializeExceptionChain [0x77AEB74B+107]
+	RtlClearBits [0x77AEB6CF+191]
+ 
+[2023-06-30 11:32:32] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
+[2023-06-30 11:32:33] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
+[2023-06-30 11:32:38] [ERROR] [base.py]/[line: 49]/[inner] Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="menu_contacts"]"}
+  (Session info: chrome=114.0.5735.198)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x005AA813+48355]
+	(No symbol) [0x0053C4B1]
+	(No symbol) [0x00445358]
+	(No symbol) [0x004709A5]
+	(No symbol) [0x00470B3B]
+	(No symbol) [0x0049E232]
+	(No symbol) [0x0048A784]
+	(No symbol) [0x0049C922]
+	(No symbol) [0x0048A536]
+	(No symbol) [0x004682DC]
+	(No symbol) [0x004693DD]
+	GetHandleVerifier [0x0080AABD+2539405]
+	GetHandleVerifier [0x0084A78F+2800735]
+	GetHandleVerifier [0x0084456C+2775612]
+	GetHandleVerifier [0x006351E0+616112]
+	(No symbol) [0x00545F8C]
+	(No symbol) [0x00542328]
+	(No symbol) [0x0054240B]
+	(No symbol) [0x00534FF7]
+	BaseThreadInitThunk [0x76787D59+25]
+	RtlInitializeExceptionChain [0x77AEB74B+107]
+	RtlClearBits [0x77AEB6CF+191]
+ 
+[2023-06-30 11:32:38] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 

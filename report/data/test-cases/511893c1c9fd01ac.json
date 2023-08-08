@@ -1,0 +1,265 @@
+{
+  "uid" : "511893c1c9fd01ac",
+  "name" : "test_add_member_from_memberlistpage",
+  "fullName" : "testcase.test_add_member.TestAddMember#test_add_member_from_memberlistpage",
+  "historyId" : "3aba508366900283d13031bd490b5cdf",
+  "time" : {
+    "start" : 1688110156629,
+    "stop" : 1688110161881,
+    "duration" : 5252
+  },
+  "status" : "broken",
+  "statusMessage" : "Exception",
+  "statusTrace" : "self = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, args = ('id', 'menu_contacts1'), kwargs = {}\n\n    def inner(self, *args, **kwargs):\n        try:\n>           return func(self, *args, **kwargs)\n\npage\\base.py:28: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, by = 'id', value = 'menu_contacts1'\n\n    @output_exception\n    def do_find(self, by, value=None):\n        if value:\n>           return self.driver.find_element(by, value)\n\npage\\base.py:40: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"fd524ad65e5a952f3a2860acf9bbc051\")>, by = 'css selector', value = '[id=\"menu_contacts1\"]'\n\n    def find_element(self, by=By.ID, value=None) -> WebElement:\n        \"\"\"\n        Find an element given a By strategy and locator.\n    \n        :Usage:\n            ::\n    \n                element = driver.find_element(By.ID, 'foo')\n    \n        :rtype: WebElement\n        \"\"\"\n        if isinstance(by, RelativeBy):\n            elements = self.find_elements(by=by, value=value)\n            if not elements:\n                raise NoSuchElementException(f\"Cannot locate relative element with: {by.root}\")\n            return elements[0]\n    \n        if by == By.ID:\n            by = By.CSS_SELECTOR\n            value = '[id=\"%s\"]' % value\n        elif by == By.CLASS_NAME:\n            by = By.CSS_SELECTOR\n            value = \".%s\" % value\n        elif by == By.NAME:\n            by = By.CSS_SELECTOR\n            value = '[name=\"%s\"]' % value\n    \n>       return self.execute(Command.FIND_ELEMENT, {\n            'using': by,\n            'value': value})['value']\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:1251: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"fd524ad65e5a952f3a2860acf9bbc051\")>, driver_command = 'findElement'\nparams = {'using': 'css selector', 'value': '[id=\"menu_contacts1\"]'}\n\n    def execute(self, driver_command: str, params: dict = None) -> dict:\n        \"\"\"\n        Sends a command to be executed by a command.CommandExecutor.\n    \n        :Args:\n         - driver_command: The name of the command to execute as a string.\n         - params: A dictionary of named parameters to send with the command.\n    \n        :Returns:\n          The command's JSON response loaded into a dictionary object.\n        \"\"\"\n        if self.session_id:\n            if not params:\n                params = {'sessionId': self.session_id}\n            elif 'sessionId' not in params:\n                params['sessionId'] = self.session_id\n    \n        params = self._wrap_value(params)\n        response = self.command_executor.execute(driver_command, params)\n        if response:\n>           self.error_handler.check_response(response)\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:430: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x000001DA6EE582B0>\nresponse = {'status': 404, 'value': '{\"value\":{\"error\":\"no such element\",\"message\":\"no such element: Unable to locate element: {\\...dInitThunk [0x76787D59+25]\\\\n\\\\tRtlInitializeExceptionChain [0x77AEB74B+107]\\\\n\\\\tRtlClearBits [0x77AEB6CF+191]\\\\n\"}}'}\n\n    def check_response(self, response: Dict[str, Any]) -> None:\n        \"\"\"\n        Checks that a JSON response from the WebDriver does not have an error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        \"\"\"\n        status = response.get('status', None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(\"message\", \"\")\n        screen: str = response.get(\"screen\", \"\")\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get('value', None)\n            if value_json and isinstance(value_json, str):\n                import json\n                try:\n                    value = json.loads(value_json)\n                    if len(value.keys()) == 1:\n                        value = value['value']\n                    status = value.get('error', None)\n                    if not status:\n                        status = value.get(\"status\", ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(\"value\") or value.get(\"message\")\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get('message')\n                    else:\n                        message = value.get('message', None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        if status in ErrorCode.NO_SUCH_ELEMENT:\n            exception_class = NoSuchElementException\n        elif status in ErrorCode.NO_SUCH_FRAME:\n            exception_class = NoSuchFrameException\n        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:\n            exception_class = NoSuchShadowRootException\n        elif status in ErrorCode.NO_SUCH_WINDOW:\n            exception_class = NoSuchWindowException\n        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:\n            exception_class = StaleElementReferenceException\n        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:\n            exception_class = ElementNotVisibleException\n        elif status in ErrorCode.INVALID_ELEMENT_STATE:\n            exception_class = InvalidElementStateException\n        elif status in ErrorCode.INVALID_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:\n            exception_class = InvalidSelectorException\n        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:\n            exception_class = ElementNotSelectableException\n        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:\n            exception_class = ElementNotInteractableException\n        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:\n            exception_class = InvalidCookieDomainException\n        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:\n            exception_class = UnableToSetCookieException\n        elif status in ErrorCode.TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.SCRIPT_TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.UNKNOWN_ERROR:\n            exception_class = WebDriverException\n        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:\n            exception_class = UnexpectedAlertPresentException\n        elif status in ErrorCode.NO_ALERT_OPEN:\n            exception_class = NoAlertPresentException\n        elif status in ErrorCode.IME_NOT_AVAILABLE:\n            exception_class = ImeNotAvailableException\n        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:\n            exception_class = ImeActivationFailedException\n        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:\n            exception_class = MoveTargetOutOfBoundsException\n        elif status in ErrorCode.JAVASCRIPT_ERROR:\n            exception_class = JavascriptException\n        elif status in ErrorCode.SESSION_NOT_CREATED:\n            exception_class = SessionNotCreatedException\n        elif status in ErrorCode.INVALID_ARGUMENT:\n            exception_class = InvalidArgumentException\n        elif status in ErrorCode.NO_SUCH_COOKIE:\n            exception_class = NoSuchCookieException\n        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:\n            exception_class = ScreenshotException\n        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:\n            exception_class = ElementClickInterceptedException\n        elif status in ErrorCode.INSECURE_CERTIFICATE:\n            exception_class = InsecureCertificateException\n        elif status in ErrorCode.INVALID_COORDINATES:\n            exception_class = InvalidCoordinatesException\n        elif status in ErrorCode.INVALID_SESSION_ID:\n            exception_class = InvalidSessionIdException\n        elif status in ErrorCode.UNKNOWN_METHOD:\n            exception_class = UnknownMethodException\n        else:\n            exception_class = WebDriverException\n        if not value:\n            value = response['value']\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == \"\" and 'message' in value:\n            message = value['message']\n    \n        screen = None  # type: ignore[assignment]\n        if 'screen' in value:\n            screen = value['screen']\n    \n        stacktrace = None\n        st_value = value.get('stackTrace') or value.get('stacktrace')\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split('\\n')\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = self._value_or_default(frame, 'lineNumber', '')\n                        file = self._value_or_default(frame, 'fileName', '<anonymous>')\n                        if line:\n                            file = \"%s:%s\" % (file, line)\n                        meth = self._value_or_default(frame, 'methodName', '<anonymous>')\n                        if 'className' in frame:\n                            meth = \"%s.%s\" % (frame['className'], meth)\n                        msg = \"    at %s (%s)\"\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if 'data' in value:\n                alert_text = value['data'].get('text')\n            elif 'alert' in value:\n                alert_text = value['alert'].get('text')\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n>       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"menu_contacts1\"]\"}\nE         (Session info: chrome=114.0.5735.198)\nE       Stacktrace:\nE       Backtrace:\nE       \tGetHandleVerifier [0x005AA813+48355]\nE       \t(No symbol) [0x0053C4B1]\nE       \t(No symbol) [0x00445358]\nE       \t(No symbol) [0x004709A5]\nE       \t(No symbol) [0x00470B3B]\nE       \t(No symbol) [0x0049E232]\nE       \t(No symbol) [0x0048A784]\nE       \t(No symbol) [0x0049C922]\nE       \t(No symbol) [0x0048A536]\nE       \t(No symbol) [0x004682DC]\nE       \t(No symbol) [0x004693DD]\nE       \tGetHandleVerifier [0x0080AABD+2539405]\nE       \tGetHandleVerifier [0x0084A78F+2800735]\nE       \tGetHandleVerifier [0x0084456C+2775612]\nE       \tGetHandleVerifier [0x006351E0+616112]\nE       \t(No symbol) [0x00545F8C]\nE       \t(No symbol) [0x00542328]\nE       \t(No symbol) [0x0054240B]\nE       \t(No symbol) [0x00534FF7]\nE       \tBaseThreadInitThunk [0x76787D59+25]\nE       \tRtlInitializeExceptionChain [0x77AEB74B+107]\nE       \tRtlClearBits [0x77AEB6CF+191]\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py:247: NoSuchElementException\n\nDuring handling of the above exception, another exception occurred:\n\nself = <testcase.test_add_member.TestAddMember object at 0x000001DA6EDCBFA0>\n\n    @allure.story(\"通讯录入口添加成员\")\n    def test_add_member_from_memberlistpage(self):\n>       result = self.home.click_menu_contacts(). \\\n            click_add_member_btn(). \\\n            edit_member_and_save(self.fk.get_random_name(), self.fk.get_random_id(),\n                                 self.fk.get_random_phone()). \\\n            get_tips()\n\ntestcase\\test_add_member.py:36: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\npage\\home_page.py:28: in click_menu_contacts\n    self.do_find(*self.__MENU_CONTACTS).click()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, args = ('id', 'menu_contacts1'), kwargs = {}\n\n    def inner(self, *args, **kwargs):\n        try:\n            return func(self, *args, **kwargs)\n        except Exception as e:\n            logger.error(e)\n            self.save_screenshot()\n            self.save_pagesource()\n>           raise Exception\nE           Exception\n\npage\\base.py:33: Exception",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_xunit_setup_method_fixture_TestAddMember",
+    "time" : {
+      "start" : 1688110156475,
+      "stop" : 1688110156629,
+      "duration" : 154
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "_xunit_setup_class_fixture_TestAddMember",
+    "time" : {
+      "start" : 1688110147482,
+      "stop" : 1688110153015,
+      "duration" : 5533
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1688110147340,
+      "stop" : 1688110147482,
+      "duration" : 142
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "Exception",
+    "statusTrace" : "self = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, args = ('id', 'menu_contacts1'), kwargs = {}\n\n    def inner(self, *args, **kwargs):\n        try:\n>           return func(self, *args, **kwargs)\n\npage\\base.py:28: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, by = 'id', value = 'menu_contacts1'\n\n    @output_exception\n    def do_find(self, by, value=None):\n        if value:\n>           return self.driver.find_element(by, value)\n\npage\\base.py:40: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"fd524ad65e5a952f3a2860acf9bbc051\")>, by = 'css selector', value = '[id=\"menu_contacts1\"]'\n\n    def find_element(self, by=By.ID, value=None) -> WebElement:\n        \"\"\"\n        Find an element given a By strategy and locator.\n    \n        :Usage:\n            ::\n    \n                element = driver.find_element(By.ID, 'foo')\n    \n        :rtype: WebElement\n        \"\"\"\n        if isinstance(by, RelativeBy):\n            elements = self.find_elements(by=by, value=value)\n            if not elements:\n                raise NoSuchElementException(f\"Cannot locate relative element with: {by.root}\")\n            return elements[0]\n    \n        if by == By.ID:\n            by = By.CSS_SELECTOR\n            value = '[id=\"%s\"]' % value\n        elif by == By.CLASS_NAME:\n            by = By.CSS_SELECTOR\n            value = \".%s\" % value\n        elif by == By.NAME:\n            by = By.CSS_SELECTOR\n            value = '[name=\"%s\"]' % value\n    \n>       return self.execute(Command.FIND_ELEMENT, {\n            'using': by,\n            'value': value})['value']\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:1251: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"fd524ad65e5a952f3a2860acf9bbc051\")>, driver_command = 'findElement'\nparams = {'using': 'css selector', 'value': '[id=\"menu_contacts1\"]'}\n\n    def execute(self, driver_command: str, params: dict = None) -> dict:\n        \"\"\"\n        Sends a command to be executed by a command.CommandExecutor.\n    \n        :Args:\n         - driver_command: The name of the command to execute as a string.\n         - params: A dictionary of named parameters to send with the command.\n    \n        :Returns:\n          The command's JSON response loaded into a dictionary object.\n        \"\"\"\n        if self.session_id:\n            if not params:\n                params = {'sessionId': self.session_id}\n            elif 'sessionId' not in params:\n                params['sessionId'] = self.session_id\n    \n        params = self._wrap_value(params)\n        response = self.command_executor.execute(driver_command, params)\n        if response:\n>           self.error_handler.check_response(response)\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py:430: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x000001DA6EE582B0>\nresponse = {'status': 404, 'value': '{\"value\":{\"error\":\"no such element\",\"message\":\"no such element: Unable to locate element: {\\...dInitThunk [0x76787D59+25]\\\\n\\\\tRtlInitializeExceptionChain [0x77AEB74B+107]\\\\n\\\\tRtlClearBits [0x77AEB6CF+191]\\\\n\"}}'}\n\n    def check_response(self, response: Dict[str, Any]) -> None:\n        \"\"\"\n        Checks that a JSON response from the WebDriver does not have an error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        \"\"\"\n        status = response.get('status', None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(\"message\", \"\")\n        screen: str = response.get(\"screen\", \"\")\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get('value', None)\n            if value_json and isinstance(value_json, str):\n                import json\n                try:\n                    value = json.loads(value_json)\n                    if len(value.keys()) == 1:\n                        value = value['value']\n                    status = value.get('error', None)\n                    if not status:\n                        status = value.get(\"status\", ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(\"value\") or value.get(\"message\")\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get('message')\n                    else:\n                        message = value.get('message', None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        if status in ErrorCode.NO_SUCH_ELEMENT:\n            exception_class = NoSuchElementException\n        elif status in ErrorCode.NO_SUCH_FRAME:\n            exception_class = NoSuchFrameException\n        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:\n            exception_class = NoSuchShadowRootException\n        elif status in ErrorCode.NO_SUCH_WINDOW:\n            exception_class = NoSuchWindowException\n        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:\n            exception_class = StaleElementReferenceException\n        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:\n            exception_class = ElementNotVisibleException\n        elif status in ErrorCode.INVALID_ELEMENT_STATE:\n            exception_class = InvalidElementStateException\n        elif status in ErrorCode.INVALID_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR \\\n                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:\n            exception_class = InvalidSelectorException\n        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:\n            exception_class = ElementNotSelectableException\n        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:\n            exception_class = ElementNotInteractableException\n        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:\n            exception_class = InvalidCookieDomainException\n        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:\n            exception_class = UnableToSetCookieException\n        elif status in ErrorCode.TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.SCRIPT_TIMEOUT:\n            exception_class = TimeoutException\n        elif status in ErrorCode.UNKNOWN_ERROR:\n            exception_class = WebDriverException\n        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:\n            exception_class = UnexpectedAlertPresentException\n        elif status in ErrorCode.NO_ALERT_OPEN:\n            exception_class = NoAlertPresentException\n        elif status in ErrorCode.IME_NOT_AVAILABLE:\n            exception_class = ImeNotAvailableException\n        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:\n            exception_class = ImeActivationFailedException\n        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:\n            exception_class = MoveTargetOutOfBoundsException\n        elif status in ErrorCode.JAVASCRIPT_ERROR:\n            exception_class = JavascriptException\n        elif status in ErrorCode.SESSION_NOT_CREATED:\n            exception_class = SessionNotCreatedException\n        elif status in ErrorCode.INVALID_ARGUMENT:\n            exception_class = InvalidArgumentException\n        elif status in ErrorCode.NO_SUCH_COOKIE:\n            exception_class = NoSuchCookieException\n        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:\n            exception_class = ScreenshotException\n        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:\n            exception_class = ElementClickInterceptedException\n        elif status in ErrorCode.INSECURE_CERTIFICATE:\n            exception_class = InsecureCertificateException\n        elif status in ErrorCode.INVALID_COORDINATES:\n            exception_class = InvalidCoordinatesException\n        elif status in ErrorCode.INVALID_SESSION_ID:\n            exception_class = InvalidSessionIdException\n        elif status in ErrorCode.UNKNOWN_METHOD:\n            exception_class = UnknownMethodException\n        else:\n            exception_class = WebDriverException\n        if not value:\n            value = response['value']\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == \"\" and 'message' in value:\n            message = value['message']\n    \n        screen = None  # type: ignore[assignment]\n        if 'screen' in value:\n            screen = value['screen']\n    \n        stacktrace = None\n        st_value = value.get('stackTrace') or value.get('stacktrace')\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split('\\n')\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = self._value_or_default(frame, 'lineNumber', '')\n                        file = self._value_or_default(frame, 'fileName', '<anonymous>')\n                        if line:\n                            file = \"%s:%s\" % (file, line)\n                        meth = self._value_or_default(frame, 'methodName', '<anonymous>')\n                        if 'className' in frame:\n                            meth = \"%s.%s\" % (frame['className'], meth)\n                        msg = \"    at %s (%s)\"\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if 'data' in value:\n                alert_text = value['data'].get('text')\n            elif 'alert' in value:\n                alert_text = value['alert'].get('text')\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n>       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"menu_contacts1\"]\"}\nE         (Session info: chrome=114.0.5735.198)\nE       Stacktrace:\nE       Backtrace:\nE       \tGetHandleVerifier [0x005AA813+48355]\nE       \t(No symbol) [0x0053C4B1]\nE       \t(No symbol) [0x00445358]\nE       \t(No symbol) [0x004709A5]\nE       \t(No symbol) [0x00470B3B]\nE       \t(No symbol) [0x0049E232]\nE       \t(No symbol) [0x0048A784]\nE       \t(No symbol) [0x0049C922]\nE       \t(No symbol) [0x0048A536]\nE       \t(No symbol) [0x004682DC]\nE       \t(No symbol) [0x004693DD]\nE       \tGetHandleVerifier [0x0080AABD+2539405]\nE       \tGetHandleVerifier [0x0084A78F+2800735]\nE       \tGetHandleVerifier [0x0084456C+2775612]\nE       \tGetHandleVerifier [0x006351E0+616112]\nE       \t(No symbol) [0x00545F8C]\nE       \t(No symbol) [0x00542328]\nE       \t(No symbol) [0x0054240B]\nE       \t(No symbol) [0x00534FF7]\nE       \tBaseThreadInitThunk [0x76787D59+25]\nE       \tRtlInitializeExceptionChain [0x77AEB74B+107]\nE       \tRtlClearBits [0x77AEB6CF+191]\n\nvenv\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py:247: NoSuchElementException\n\nDuring handling of the above exception, another exception occurred:\n\nself = <testcase.test_add_member.TestAddMember object at 0x000001DA6EDCBFA0>\n\n    @allure.story(\"通讯录入口添加成员\")\n    def test_add_member_from_memberlistpage(self):\n>       result = self.home.click_menu_contacts(). \\\n            click_add_member_btn(). \\\n            edit_member_and_save(self.fk.get_random_name(), self.fk.get_random_id(),\n                                 self.fk.get_random_phone()). \\\n            get_tips()\n\ntestcase\\test_add_member.py:36: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\npage\\home_page.py:28: in click_menu_contacts\n    self.do_find(*self.__MENU_CONTACTS).click()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <page.home_page.HomePage object at 0x000001DA6EF20EE0>, args = ('id', 'menu_contacts1'), kwargs = {}\n\n    def inner(self, *args, **kwargs):\n        try:\n            return func(self, *args, **kwargs)\n        except Exception as e:\n            logger.error(e)\n            self.save_screenshot()\n            self.save_pagesource()\n>           raise Exception\nE           Exception\n\npage\\base.py:33: Exception",
+    "steps" : [ {
+      "name" : "点击菜单：通讯录",
+      "time" : {
+        "start" : 1688110156640,
+        "stop" : 1688110161867,
+        "duration" : 5227
+      },
+      "status" : "broken",
+      "statusMessage" : "Exception\n",
+      "statusTrace" : "  File \"D:\\pycharm\\Selenium\\page\\home_page.py\", line 28, in click_menu_contacts\n    self.do_find(*self.__MENU_CONTACTS).click()\n  File \"D:\\pycharm\\Selenium\\page\\base.py\", line 33, in inner\n    raise Exception\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "86bbd565062a48fc",
+        "name" : "error_image",
+        "source" : "86bbd565062a48fc.png",
+        "type" : "image/png",
+        "size" : 119347
+      }, {
+        "uid" : "c3a6e436ab3be7b8",
+        "name" : "pagesource",
+        "source" : "c3a6e436ab3be7b8.txt",
+        "type" : "text/plain",
+        "size" : 56969
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 2,
+      "shouldDisplayMessage" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "3a0a654378ee7a36",
+      "name" : "log",
+      "source" : "3a0a654378ee7a36.txt",
+      "type" : "text/plain",
+      "size" : 1037
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "hasContent" : true,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "_xunit_setup_method_fixture_TestAddMember::0",
+    "time" : {
+      "start" : 1688110162262,
+      "stop" : 1688110163329,
+      "duration" : 1067
+    },
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "返回首页",
+      "time" : {
+        "start" : 1688110162264,
+        "stop" : 1688110163321,
+        "duration" : 1057
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "_xunit_setup_class_fixture_TestAddMember::0",
+    "time" : {
+      "start" : 1688110163330,
+      "stop" : 1688110165615,
+      "duration" : 2285
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "添加成员"
+  }, {
+    "name" : "story",
+    "value" : "通讯录入口添加成员"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcase"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_member"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestAddMember"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-7Q67NG8"
+  }, {
+    "name" : "thread",
+    "value" : "23196-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcase.test_add_member"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "4a3dbef9636af635",
+      "status" : "passed",
+      "time" : {
+        "start" : 1688110088095,
+        "stop" : 1688110090106,
+        "duration" : 2011
+      }
+    }, {
+      "uid" : "85e01b6bbdae83d1",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found\n  (Session info: chrome=114.0.5735.198)\nStacktrace:\nBacktrace:\n\tGetHandleVerifier [0x005AA813+48355]\n\t(No symbol) [0x0053C4B1]\n\t(No symbol) [0x00445358]\n\t(No symbol) [0x004487A1]\n\t(No symbol) [0x004499E1]\n\t(No symbol) [0x00449A80]\n\t(No symbol) [0x00471D29]\n\t(No symbol) [0x00469DAD]\n\t(No symbol) [0x0048A73C]\n\t(No symbol) [0x00469A36]\n\t(No symbol) [0x0048AA94]\n\t(No symbol) [0x0049C922]\n\t(No symbol) [0x0048A536]\n\t(No symbol) [0x004682DC]\n\t(No symbol) [0x004693DD]\n\tGetHandleVerifier [0x0080AABD+2539405]\n\tGetHandleVerifier [0x0084A78F+2800735]\n\tGetHandleVerifier [0x0084456C+2775612]\n\tGetHandleVerifier [0x006351E0+616112]\n\t(No symbol) [0x00545F8C]\n\t(No symbol) [0x00542328]\n\t(No symbol) [0x0054240B]\n\t(No symbol) [0x00534FF7]\n\tBaseThreadInitThunk [0x76787D59+25]\n\tRtlInitializeExceptionChain [0x77AEB74B+107]\n\tRtlClearBits [0x77AEB6CF+191]",
+      "time" : {
+        "start" : 1688109915766,
+        "stop" : 1688109916027,
+        "duration" : 261
+      }
+    }, {
+      "uid" : "8d36d951e088ff1e",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found\n  (Session info: chrome=114.0.5735.198)\nStacktrace:\nBacktrace:\n\tGetHandleVerifier [0x005AA813+48355]\n\t(No symbol) [0x0053C4B1]\n\t(No symbol) [0x00445358]\n\t(No symbol) [0x004487A1]\n\t(No symbol) [0x004499E1]\n\t(No symbol) [0x00449A80]\n\t(No symbol) [0x00471D29]\n\t(No symbol) [0x00469DAD]\n\t(No symbol) [0x0048A73C]\n\t(No symbol) [0x00469A36]\n\t(No symbol) [0x0048AA94]\n\t(No symbol) [0x0049C922]\n\t(No symbol) [0x0048A536]\n\t(No symbol) [0x004682DC]\n\t(No symbol) [0x004693DD]\n\tGetHandleVerifier [0x0080AABD+2539405]\n\tGetHandleVerifier [0x0084A78F+2800735]\n\tGetHandleVerifier [0x0084456C+2775612]\n\tGetHandleVerifier [0x006351E0+616112]\n\t(No symbol) [0x00545F8C]\n\t(No symbol) [0x00542328]\n\t(No symbol) [0x0054240B]\n\t(No symbol) [0x00534FF7]\n\tBaseThreadInitThunk [0x76787D59+25]\n\tRtlInitializeExceptionChain [0x77AEB74B+107]\n\tRtlClearBits [0x77AEB6CF+191]",
+      "time" : {
+        "start" : 1688109703721,
+        "stop" : 1688109703989,
+        "duration" : 268
+      }
+    }, {
+      "uid" : "5f7630986a5e0ded",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'NoneType' object has no attribute 'click'",
+      "time" : {
+        "start" : 1688109051635,
+        "stop" : 1688109051643,
+        "duration" : 8
+      }
+    }, {
+      "uid" : "3f90ac7e77ad2205",
+      "status" : "broken",
+      "statusDetails" : "Exception",
+      "time" : {
+        "start" : 1688095953010,
+        "stop" : 1688095958227,
+        "duration" : 5217
+      }
+    }, {
+      "uid" : "d8f2c351ca85acb3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1688023676316,
+        "stop" : 1688023678263,
+        "duration" : 1947
+      }
+    }, {
+      "uid" : "dcc522a77fcc0df1",
+      "status" : "passed",
+      "time" : {
+        "start" : 1688021654423,
+        "stop" : 1688021656447,
+        "duration" : 2024
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "511893c1c9fd01ac.json",
+  "parameterValues" : [ ]
+}

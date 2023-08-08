@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "Exception",
+      "children" : [ {
+        "name" : "test_add_member_from_memberlistpage",
+        "uid" : "511893c1c9fd01ac",
+        "parentUid" : "e16bc8377a46bf2a443ae2374460c7dd",
+        "status" : "broken",
+        "time" : {
+          "start" : 1688110156629,
+          "stop" : 1688110161881,
+          "duration" : 5252
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "e16bc8377a46bf2a443ae2374460c7dd"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

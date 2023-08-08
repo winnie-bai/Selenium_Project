@@ -1,0 +1,5 @@
+[2023-06-30 15:10:48] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
+[2023-06-30 15:10:50] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
+[2023-06-30 15:10:50] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
+[2023-06-30 15:10:51] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
+[2023-06-30 15:10:51] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 

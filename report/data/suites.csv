@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Jun 30 15:29:13 CST 2023","Fri Jun 30 15:29:15 CST 2023","2269","testcase","test_add_member","TestAddMember","","","test_add_member_from_homepage",""
+"broken","Fri Jun 30 15:29:16 CST 2023","Fri Jun 30 15:29:21 CST 2023","5252","testcase","test_add_member","TestAddMember","","","test_add_member_from_memberlistpage",""

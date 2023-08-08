@@ -1,0 +1,5 @@
+[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
+[32mINFO    [0m utils.log_utils:home_page.py:13 点击添加成员按钮
+[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 输入姓名狄磊,用户id130524194211123875,电话15032075573
+[35mDEBUG   [0m utils.log_utils:member_list_page.py:14 获取提示文案为【保存成功】
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

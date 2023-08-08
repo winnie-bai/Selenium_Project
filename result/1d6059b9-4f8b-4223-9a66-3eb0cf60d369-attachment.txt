@@ -1,0 +1,30 @@
+[32mINFO    [0m utils.log_utils:home_page.py:26 点击菜单：通讯录
+[32mINFO    [0m utils.log_utils:member_list_page.py:19 点击【添加成员】按钮
+[31m[1mERROR   [0m utils.log_utils:base.py:30 Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="username"]"}
+  (Session info: chrome=115.0.5790.110)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x002EA813+48355]
+	(No symbol) [0x0027C4B1]
+	(No symbol) [0x00185358]
+	(No symbol) [0x001B09A5]
+	(No symbol) [0x001B0B3B]
+	(No symbol) [0x001DE232]
+	(No symbol) [0x001CA784]
+	(No symbol) [0x001DC922]
+	(No symbol) [0x001CA536]
+	(No symbol) [0x001A82DC]
+	(No symbol) [0x001A93DD]
+	GetHandleVerifier [0x0054AABD+2539405]
+	GetHandleVerifier [0x0058A78F+2800735]
+	GetHandleVerifier [0x0058456C+2775612]
+	GetHandleVerifier [0x003751E0+616112]
+	(No symbol) [0x00285F8C]
+	(No symbol) [0x00282328]
+	(No symbol) [0x0028240B]
+	(No symbol) [0x00274FF7]
+	BaseThreadInitThunk [0x76427D59+25]
+	RtlInitializeExceptionChain [0x7787B79B+107]
+	RtlClearBits [0x7787B71F+191]
+	(No symbol) [0x00000000]
+[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

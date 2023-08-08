@@ -1,0 +1,11 @@
+[2023-07-28 15:10:13] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
+[2023-07-28 15:10:13] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
+[2023-07-28 15:10:19] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
+[2023-07-28 15:10:19] [INFO] [member_list_page.py]/[line: 19]/[click_add_member_btn] 点击【添加成员】按钮 
+[2023-07-28 15:10:21] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
+[2023-07-28 15:10:22] [DEBUG] [addmember_page.py]/[line: 15]/[edit_member_and_save] 输入姓名李欣,用户id210204196408218808,电话15831730233 
+[2023-07-28 15:10:23] [DEBUG] [addmember_page.py]/[line: 15]/[edit_member_and_save] 输入姓名翁帅,用户id361001196001270173,电话13268645752 
+[2023-07-28 15:10:26] [DEBUG] [member_list_page.py]/[line: 14]/[get_tips] 获取提示文案为【保存成功】 
+[2023-07-28 15:10:26] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
+[2023-07-28 15:10:28] [DEBUG] [member_list_page.py]/[line: 14]/[get_tips] 获取提示文案为【保存成功】 
+[2023-07-28 15:10:29] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 

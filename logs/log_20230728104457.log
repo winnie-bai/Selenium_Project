@@ -1,0 +1,36 @@
+[2023-07-28 10:45:00] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
+[2023-07-28 10:45:02] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
+[2023-07-28 10:45:02] [DEBUG] [addmember_page.py]/[line: 15]/[edit_member_and_save] 输入姓名王红霞,用户id510502195301314197,电话13171327405 
+[2023-07-28 10:45:04] [DEBUG] [member_list_page.py]/[line: 14]/[get_tips] 获取提示文案为【保存成功】 
+[2023-07-28 10:45:04] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
+[2023-07-28 10:45:06] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
+[2023-07-28 10:45:07] [INFO] [member_list_page.py]/[line: 19]/[click_add_member_btn] 点击【添加成员】按钮 
+[2023-07-28 10:45:12] [ERROR] [base.py]/[line: 30]/[inner] Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="username"]"}
+  (Session info: chrome=115.0.5790.110)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x002EA813+48355]
+	(No symbol) [0x0027C4B1]
+	(No symbol) [0x00185358]
+	(No symbol) [0x001B09A5]
+	(No symbol) [0x001B0B3B]
+	(No symbol) [0x001DE232]
+	(No symbol) [0x001CA784]
+	(No symbol) [0x001DC922]
+	(No symbol) [0x001CA536]
+	(No symbol) [0x001A82DC]
+	(No symbol) [0x001A93DD]
+	GetHandleVerifier [0x0054AABD+2539405]
+	GetHandleVerifier [0x0058A78F+2800735]
+	GetHandleVerifier [0x0058456C+2775612]
+	GetHandleVerifier [0x003751E0+616112]
+	(No symbol) [0x00285F8C]
+	(No symbol) [0x00282328]
+	(No symbol) [0x0028240B]
+	(No symbol) [0x00274FF7]
+	BaseThreadInitThunk [0x76427D59+25]
+	RtlInitializeExceptionChain [0x7787B79B+107]
+	RtlClearBits [0x7787B71F+191]
+	(No symbol) [0x00000000]
+ 
+[2023-07-28 10:45:12] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
