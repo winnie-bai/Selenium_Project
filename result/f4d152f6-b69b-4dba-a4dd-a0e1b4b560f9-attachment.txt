@@ -1,5 +1,0 @@
-[32mINFO    [0m utils.log_utils:home_page.py:26 点击菜单：通讯录
-[32mINFO    [0m utils.log_utils:member_list_page.py:19 点击【添加成员】按钮
-[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 输入姓名夏小红,用户id361126199408183510,电话18824945205
-[35mDEBUG   [0m utils.log_utils:member_list_page.py:14 获取提示文案为【保存成功】
-[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

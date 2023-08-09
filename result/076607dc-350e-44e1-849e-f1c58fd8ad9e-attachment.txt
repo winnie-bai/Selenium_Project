@@ -1,5 +1,0 @@
-[32mINFO    [0m utils.log_utils:home_page.py:25 <class 'page.home_page.HomePage'>:'点击菜单：通讯录'
-[32mINFO    [0m utils.log_utils:member_list_page.py:19 <class 'page.member_list_page.MemberListPage'>:点击【添加成员】按钮
-[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 <class 'page.addmember_page.AddMemberPage'>:输入姓名胡峰,用户id411329196911221853,电话14506561887
-[35mDEBUG   [0m utils.log_utils:member_list_page.py:14 <class 'page.member_list_page.MemberListPage'>:获取提示文案为【保存成功】
-[32mINFO    [0m utils.log_utils:home_page.py:19 返回首页

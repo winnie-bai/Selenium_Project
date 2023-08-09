@@ -1,5 +1,0 @@
-[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
-[32mINFO    [0m utils.log_utils:home_page.py:12 <class 'page.home_page.HomePage'>:'点击添加成员按钮'
-[35mDEBUG   [0m utils.log_utils:addmember_page.py:15 <class 'page.addmember_page.AddMemberPage'>:输入姓名刘婷,用户id210402196606086904,电话15650577170
-[35mDEBUG   [0m utils.log_utils:member_list_page.py:14 <class 'page.member_list_page.MemberListPage'>:获取提示文案为【保存成功】
-[32mINFO    [0m utils.log_utils:home_page.py:19 返回首页
