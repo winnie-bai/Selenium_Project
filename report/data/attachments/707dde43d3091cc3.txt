@@ -1,3 +1,0 @@
-[35mDEBUG   [0m utils.log_utils:login_page.py:14 登录
-[32mINFO    [0m utils.log_utils:home_page.py:13 点击添加成员按钮
-[32mINFO    [0m utils.log_utils:home_page.py:20 返回首页

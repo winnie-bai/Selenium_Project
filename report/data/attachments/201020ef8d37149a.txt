@@ -1,2 +1,0 @@
-[32mINFO    [0m utils.log_utils:home_page.py:12 <class 'page.home_page.HomePage'>:'点击添加成员按钮'
-[32mINFO    [0m utils.log_utils:home_page.py:19 返回首页
