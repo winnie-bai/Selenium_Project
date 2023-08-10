@@ -37,7 +37,7 @@ class BasePage:
                 logger.error(e)
                 self.save_screenshot()
                 self.save_pagesource()
-                pytest.xfail(e)
+                pytest.fail(str(e))
                 # raise Exception
 
         return inner
