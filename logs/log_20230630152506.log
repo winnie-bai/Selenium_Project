@@ -1,8 +1,0 @@
-[2023-06-30 15:25:10] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
-[2023-06-30 15:25:12] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
-[2023-06-30 15:25:12] [DEBUG] [addmember_page.py]/[line: 15]/[edit_member_and_save] 输入姓名狄磊,用户id130524194211123875,电话15032075573 
-[2023-06-30 15:25:14] [DEBUG] [member_list_page.py]/[line: 14]/[get_tips] 获取提示文案为【保存成功】 
-[2023-06-30 15:25:14] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
-[2023-06-30 15:25:15] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
-[2023-06-30 15:25:15] [INFO] [member_list_page.py]/[line: 19]/[click_add_member_btn] 点击【添加成员】按钮 
-[2023-06-30 15:25:16] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 

@@ -1,8 +1,0 @@
-[2023-06-30 15:21:38] [DEBUG] [login_page.py]/[line: 14]/[login] 登录 
-[2023-06-30 15:21:40] [INFO] [home_page.py]/[line: 13]/[click_add_member] 点击添加成员按钮 
-[2023-06-30 15:21:40] [DEBUG] [addmember_page.py]/[line: 15]/[edit_member_and_save] 输入姓名罗丹丹,用户id370200195702235793,电话15517457738 
-[2023-06-30 15:21:42] [DEBUG] [member_list_page.py]/[line: 14]/[get_tips] 获取提示文案为【保存成功】 
-[2023-06-30 15:21:42] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 
-[2023-06-30 15:21:43] [INFO] [home_page.py]/[line: 26]/[click_menu_contacts] 点击菜单：通讯录 
-[2023-06-30 15:21:43] [INFO] [member_list_page.py]/[line: 19]/[click_add_member_btn] 点击【添加成员】按钮 
-[2023-06-30 15:21:44] [INFO] [home_page.py]/[line: 20]/[goto_home_page] 返回首页 

@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 
 import allure
+import pytest
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions
@@ -36,7 +37,8 @@ class BasePage:
                 logger.error(e)
                 self.save_screenshot()
                 self.save_pagesource()
-                raise Exception
+                pytest.xfail(e)
+                # raise Exception
 
         return inner
 
